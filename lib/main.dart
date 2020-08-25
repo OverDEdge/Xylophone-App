@@ -18,14 +18,18 @@ class XylophoneApp extends StatelessWidget {
   ];
 
   void _playSound(filename) {
+    /*
+    Method to play a sound based on a filename
+    */
     _player.play(filename);
   }
 
   @override
   Widget build(BuildContext context) {
     _player.loadAll((_audioFileNames).map((setting) {
-      return setting['filename'] as String;
-    }).toList());
+      return setting['filename']
+          as String; // Need to typeset value to String since only defined as Object.
+    }).toList()); // Pre-loading all sound files
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
